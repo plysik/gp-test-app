@@ -1,0 +1,24 @@
+.collection.with-header .collection-item.avatar{
+    float: left;
+    width: 100%;
+}
+.collection .collection-item.avatar p.caption{
+    padding-right: 10px;
+}
+nav .brand-logo{
+    padding-left: 10px;
+}
+.collection .collection-item.avatar{
+    min-height: 94px;
+}
+nav .input-field input{
+    box-sizing: border-box;
+    border-bottom: 1px solid !important;
+    padding: 0 3px;
+}
+nav .input-field.inline{
+    padding-right: 10px;
+}
+.row .caption.col{
+    float: none !important;
+}

@@ -1,0 +1,9 @@
+{
+  "name": "gp-test-app",
+  "version": "1.0.0",
+  "description": "App just for displaying github repositories of given user",
+  "main": "app/index.js",
+  "scripts": {},
+  "author": "plysik",
+  "license": "MIT"
+}

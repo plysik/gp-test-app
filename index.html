@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pracujGP">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pracuj PL: Github API AngularJS 1.6.1 Showcase</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+
+    <link rel="stylesheet" href="lib/site.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+    <script src="app/index.js" charset="utf-8"></script>
+</head>
+<body ng-controller="gitHubApiController">
+<header>
+    <nav class="darken-3 blue">
+        <div class="nav-wrapper">
+            <span class="brand-logo">Piotr Łysik App</span>
+            <div class="right hide-on-med-and-down">
+                <div class="input-field inline">
+                    <input type="text" id="username" ng-model="user.name" class="form-control input-sm"
+                           ng-change="user.search.lookup(true)">
+                    <label for="username">Username</label>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+
+    <div class="row">
+        <div class="col s12 show-on-medium-and-down hide-on-large-only">
+            User name:
+            <div class="input-field inline">
+                <input id="username2" type="text" ng-model="user.name" ng-change="user.search.lookup(true)">
+                <label for="username2" data-error="wrong" data-success="right">ex: plysik</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card" ng-if="loading && user.name.length>0">
+                <div class="card-content">
+                    <p>
+                        loading...
+                    </p>
+                </div>
+            </div>
+            <div class="card" ng-if="errorMessage">
+                <div class="card-content">
+                    <p>
+                        {{errorMessage}}
+                    </p>
+                </div>
+            </div>
+            <ul class="collection with-header" ng-if="reposLoaded && !loading">
+                <li class="collection-header"><h5>{{user.userData.name}}'s {{listLimit}} last updated repositories</h5></li>
+                <li class="collection-item avatar"
+                    ng-repeat="repo in user.repoData | orderBy:predicate:reverse | limitTo: listLimit"
+                    ng-class-even="'blue lighten-5'">
+                    <i ng-if="repo.fork" class="material-icons blue circle">call_split</i>
+                    <i ng-if="!repo.fork" class="material-icons blue circle">assignment</i>
+                    <a class="title" href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
+                    <p class="caption col s8">
+                        {{repo.description}}
+                    </p>
+                    <build-status user-name="{{user.name}}" repo-name="{{repo.name}}"></build-status>
+                    <span class="secondary-content right-align">
+            <a href="{{repo.homepage}}" ng-if="repo.homepage" target="_blank"><i class="material-icons">language</i></a>
+            <p>
+                Last udpated: {{repo.updated_at | date : "d MMM y" : timezone}}<br>Created: {{repo.created_at| date : "d MMM y" : timezone}}
+            </p>
+            </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="page-footer blue darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h5 class="white-text">
+                    Github API AngularJS 1.6.1 Showcase
+                </h5>
+                <p class="grey-text text-lighten-4">
+                    Project Assumptions
+                </p>
+                <ul class="collection">
+                    <li class="collection-item"><span>Aplikacja korzysta z dowolnego publicznego API i wyświetla listę podanych przez użytkownika projektów, pobranych elementów (publiczne API dowolne, np. API <s>Travis CI</s> / <u>Github</u> – status ostatnich udanych buildów wybranych projektów)</span><i class="material-icons tiny green-text text-accent-4">done</i></li>
+                    <li class="collection-item"><span>Aplikacja przewiduje, że użytkownik poda niepoprawny url</span><i class="material-icons tiny green-text text-accent-4">done</i></li>
+                    <li class="collection-item"><span>Lista składa się z max. 5 elementów</span><i class="material-icons tiny green-text text-accent-4">done</i></li>
+                    <li class="collection-item"><span>UI: tytuł i założenie projektu, lista, autor. Co drugi element listy wyróżniony innym kolorem.</span><i class="material-icons tiny green-text text-accent-4">done</i></li>
+                    <li class="collection-item"><span>Użycie <s>Less</s>, Flexbox</span><i class="material-icons tiny green-text text-accent-4">done</i></li>
+                    <li class="collection-item"><span   >Kod znajduje się na publicznym repozytorium Github’a</span><i class="material-icons tiny red-text text-accent-4">error</i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 <a href="mailto:piotrek.lysik@gmail.com">Piotr Łysik</a>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/plysik" target="_blank">My repos</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
