@@ -51,8 +51,9 @@ footer.page-footer .footer-copyright{
         display: inherit;
         justify-content: flex-end;
         flex-direction: column;
+        .responsive(@breakpoint, { text-align: center !important; });
       }
-      .responsive(@breakpoint, { flex-direction: column; align-items: center; text-align: center !important; });
+      .responsive(@breakpoint, { flex-direction: column; align-items: center; text-align: center; });
     }
     .row {
       margin-bottom: 0;
