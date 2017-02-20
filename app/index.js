@@ -88,7 +88,7 @@
             return {
                 restrict: 'E',
                 template: `
-                    <div class="col s8" ng-show="statuses.length>0">
+                    <div class="col s12" ng-show="statuses.length>0">
                         <ul class="collection">
                             <li class="collection-item"
                                 ng-repeat="status in statuses | orderBy:predicate:reverse"

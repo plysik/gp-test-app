@@ -1,0 +1,50 @@
+.row .caption.col {
+  float: none !important;
+}
+nav .brand-logo {
+  padding-left: 10px;
+}
+nav .input-field.inline {
+  padding-right: 10px;
+}
+footer.page-footer .footer-copyright {
+  background-color: rgba(51, 51, 51, 0.3);
+}
+.collection.with-header .collection-item.avatar {
+  float: left;
+  width: 100%;
+}
+@media only screen and (max-width: 550px) {
+  .collection.with-header .collection-item.avatar {
+    padding-left: 20px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .collection.with-header .collection-item.avatar .circle {
+    position: relative;
+    left: 0;
+  }
+}
+.collection .collection-item p.caption {
+  padding-right: 10px;
+}
+.collection .collection-item .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.collection .collection-item .flex div:nth-child(3) {
+  display: inherit;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+@media only screen and (max-width: 550px) {
+  .collection .collection-item .flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center !important;
+  }
+}
+.collection .collection-item .row {
+  margin-bottom: 0;
+}

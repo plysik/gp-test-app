@@ -5,5 +5,9 @@
   "main": "app/index.js",
   "scripts": {},
   "author": "plysik",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0"
+  }
 }
